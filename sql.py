@@ -16,11 +16,11 @@ def query(num=None, print_output=True):
         query = f.read()
 
     connection_params = {
-        'dbname': 'postgres',
-        'host': 'localhost',
+        'dbname': 'YOUR_DBNAME',
+        'host': 'YOUR_HOSTNAME',
         'port': '5432',
-        'user': 'postgres',
-        'password': 'Angelina@1238'
+        'user': 'YOUR_USERNAME',
+        'password': 'YOUR_PASSWORD'
     }
 
     conn = psycopg2.connect(**connection_params, cursor_factory=psycopg2.extras.DictCursor)
