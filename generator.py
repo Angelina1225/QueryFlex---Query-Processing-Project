@@ -23,10 +23,10 @@ def query():
     {body}
 
     connection = psycopg2.connect(
-        dbname="postgres",
-        user="postgres",
-        password="Angelina@1238",
-        host="localhost",
+        dbname="YOUR_DATABASE",
+        user="YOUR_USERNAME",
+        password="YOUR_PASSWORD",
+        host="YOUR_HOST",
         port="5432"
     )
 
@@ -187,3 +187,4 @@ if __name__ == "__main__":
         main(sys.argv[1], print_output=False)
     else:
         main(print_output=True)
+
