@@ -1,0 +1,12 @@
+SELECT ATTRIBUTE(S):
+cust, prod, wkend_sum_quant, wkday_sum_quant
+NUMBER OF GROUPING VARIABLES(n):
+2
+GROUPING ATTRIBUTES(V):
+cust, prod
+F-VECT([F]):
+wkend_sum_quant, wkday_sum_quant
+SELECT CONDITION-VECT([σ]):
+wkend.day=[6,7]
+wkday.day=[1,2,3,4,5]
+HAVING_CONDITION(G):

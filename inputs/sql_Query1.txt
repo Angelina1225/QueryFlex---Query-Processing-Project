@@ -1,0 +1,58 @@
+-- Q1 averages
+WITH q1 AS (
+    SELECT cust, prod, AVG(quant) AS Q1_avg_quant
+    FROM sales
+    WHERE month IN (1, 2, 3)
+    GROUP BY cust, prod
+),
+
+-- Q2 averages
+q2 AS (
+    SELECT cust, prod, AVG(quant) AS Q2_avg_quant
+    FROM sales
+    WHERE month IN (4, 5, 6)
+    GROUP BY cust, prod
+),
+
+-- Q3 averages
+q3 AS (
+    SELECT cust, prod, AVG(quant) AS Q3_avg_quant
+    FROM sales
+    WHERE month IN (7, 8, 9)
+    GROUP BY cust, prod
+),
+
+-- Q4 averages
+q4 AS (
+    SELECT cust, prod, AVG(quant) AS Q4_avg_quant
+    FROM sales
+    WHERE month IN (10, 11, 12)
+    GROUP BY cust, prod
+),
+
+-- Total avg/sum/count
+total AS (
+    SELECT cust, prod,
+        AVG(quant) AS CP_avg_quant,
+        SUM(quant) AS CP_sum_quant,
+        COUNT(quant) AS CP_count_quant
+    FROM sales
+    GROUP BY cust, prod
+)
+
+-- Final join
+SELECT
+    t.cust,
+    t.prod,
+    q1.Q1_avg_quant,
+    q2.Q2_avg_quant,
+    q3.Q3_avg_quant,
+    q4.Q4_avg_quant,
+    t.CP_avg_quant,
+    t.CP_sum_quant,
+    t.CP_count_quant
+FROM total t
+LEFT JOIN q1 ON t.cust = q1.cust AND t.prod = q1.prod
+LEFT JOIN q2 ON t.cust = q2.cust AND t.prod = q2.prod
+LEFT JOIN q3 ON t.cust = q3.cust AND t.prod = q3.prod
+LEFT JOIN q4 ON t.cust = q4.cust AND t.prod = q4.prod;

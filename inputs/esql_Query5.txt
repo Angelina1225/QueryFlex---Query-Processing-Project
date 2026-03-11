@@ -1,0 +1,11 @@
+SELECT ATTRIBUTE(S):
+prod, state, X_count_quant, X_sum_quant
+NUMBER OF GROUPING VARIABLES(n):
+1
+GROUPING ATTRIBUTES(V):
+prod, state
+F-VECT([F]):
+X_count_quant, X_sum_quant
+SELECT CONDITION-VECT([σ]):
+HAVING_CONDITION(G):
+X_count_quant > 250

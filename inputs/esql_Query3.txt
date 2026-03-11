@@ -1,0 +1,14 @@
+SELECT ATTRIBUTE(S):
+cust, prod, NY_max_quant, NJ_max_quant, CT_max_quant
+NUMBER OF GROUPING VARIABLES(n):
+3
+GROUPING ATTRIBUTES(V):
+cust, prod
+F-VECT([F]):
+NY_max_quant, NJ_max_quant, CT_max_quant
+SELECT CONDITION-VECT([σ]):
+NY.state='NY'
+NJ.state='NJ'
+CT.state='CT'
+HAVING_CONDITION(G):
+NY_max_quant > NJ_max_quant and NY_max_quant > CT_max_quant

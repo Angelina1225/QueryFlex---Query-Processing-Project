@@ -1,0 +1,12 @@
+SELECT ATTRIBUTE(S):
+prod, month, PM_sum_quant, PM_max_quant, PM_min_quant
+NUMBER OF GROUPING VARIABLES(n):
+1
+GROUPING ATTRIBUTES(V):
+prod, month
+F-VECT([F]):
+PM_sum_quant, PM_max_quant, PM_min_quant
+SELECT CONDITION-VECT([σ]):
+PM.prod=prod
+PM.month=month
+HAVING_CONDITION(G):

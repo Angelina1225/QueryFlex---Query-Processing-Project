@@ -1,0 +1,37 @@
+    SELECT 
+        s.cust,
+        s.prod,
+
+        -- Max quantity in NY
+        (SELECT MAX(s1.quant)
+        FROM sales s1
+        WHERE s1.cust = s.cust AND s1.prod = s.prod AND s1.state = 'NY') AS NY_max_quant,
+
+        -- Max quantity in NJ
+        (SELECT MAX(s1.quant)
+        FROM sales s1
+        WHERE s1.cust = s.cust AND s1.prod = s.prod AND s1.state = 'NJ') AS NJ_max_quant,
+
+        -- Max quantity in CT
+        (SELECT MAX(s1.quant)
+        FROM sales s1
+        WHERE s1.cust = s.cust AND s1.prod = s.prod AND s1.state = 'CT') AS CT_max_quant
+
+    FROM sales s
+    GROUP BY s.cust, s.prod
+    HAVING 
+        (SELECT MAX(s1.quant)
+        FROM sales s1
+        WHERE s1.cust = s.cust AND s1.prod = s.prod AND s1.state = 'NY') >
+        (SELECT MAX(s1.quant)
+        FROM sales s1
+        WHERE s1.cust = s.cust AND s1.prod = s.prod AND s1.state = 'NJ')
+    
+        AND
+
+        (SELECT MAX(s1.quant)
+        FROM sales s1
+        WHERE s1.cust = s.cust AND s1.prod = s.prod AND s1.state = 'NY') >
+        (SELECT MAX(s1.quant)
+        FROM sales s1
+        WHERE s1.cust = s.cust AND s1.prod = s.prod AND s1.state = 'CT')

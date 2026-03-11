@@ -1,0 +1,12 @@
+SELECT ATTRIBUTE(S):
+prod, NY_sum_quant, NY_avg_quant, NY_count_quant, NJ_sum_quant, NJ_avg_quant, NJ_count_quant
+NUMBER OF GROUPING VARIABLES(n):
+2
+GROUPING ATTRIBUTES(V):
+prod
+F-VECT([F]):
+NY_sum_quant, NY_avg_quant, NY_count_quant, NJ_sum_quant, NJ_avg_quant, NJ_count_quant
+SELECT CONDITION-VECT([σ]):
+NY.state='NY'
+NJ.state='NJ'
+HAVING_CONDITION(G):

@@ -1,0 +1,20 @@
+    WITH weekend_sales AS (
+        SELECT cust, prod, SUM(quant) AS wkend_sum_quant
+        FROM sales
+        WHERE day IN (6, 7)
+        GROUP BY cust, prod
+    ),
+    weekday_sales AS (
+        SELECT cust, prod, SUM(quant) AS wkday_sum_quant
+        FROM sales
+        WHERE day IN (1, 2, 3, 4, 5)
+        GROUP BY cust, prod
+    )
+    SELECT 
+        w.cust,
+        w.prod,
+        w.wkend_sum_quant,
+        d.wkday_sum_quant
+    FROM weekend_sales w
+    JOIN weekday_sales d
+    ON w.cust = d.cust AND w.prod = d.prod;

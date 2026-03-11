@@ -1,0 +1,8 @@
+    SELECT
+        prod,
+        month,
+        SUM(quant) AS PM_sum_quant,
+        MAX(quant) AS PM_max_quant,
+        MIN(quant) AS PM_min_quant
+    FROM sales
+    GROUP BY prod, month;

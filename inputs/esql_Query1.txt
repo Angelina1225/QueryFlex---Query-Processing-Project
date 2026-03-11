@@ -1,0 +1,24 @@
+SELECT ATTRIBUTE(S):
+cust, prod, Q1_avg_quant, Q2_avg_quant, Q3_avg_quant, Q4_avg_quant, CP_avg_quant, CP_sum_quant, CP_count_quant
+NUMBER OF GROUPING VARIABLES(n):
+5
+GROUPING ATTRIBUTES(V):
+cust, prod
+F-VECT([F]):
+Q1_avg_quant, Q2_avg_quant, Q3_avg_quant, Q4_avg_quant, CP_avg_quant, CP_sum_quant, CP_count_quant
+SELECT CONDITION-VECT([σ]):
+CP.cust=cust
+CP.prod=prod
+Q1.cust=cust
+Q1.prod=prod
+Q1.month=[1,2,3]
+Q2.cust=cust
+Q2.prod=prod
+Q2.month=[4,5,6]
+Q3.cust=cust
+Q3.prod=prod
+Q3.month=[7,8,9]
+Q4.cust=cust
+Q4.prod=prod
+Q4.month=[10,11,12]
+HAVING_CONDITION(G):

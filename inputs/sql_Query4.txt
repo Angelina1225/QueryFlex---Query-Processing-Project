@@ -1,0 +1,31 @@
+    SELECT 
+        s.prod,
+
+        -- NY state
+        (SELECT SUM(s1.quant)
+        FROM sales s1
+        WHERE s1.prod = s.prod AND s1.state = 'NY') AS NY_sum_quant,
+
+        (SELECT AVG(s1.quant)
+        FROM sales s1
+        WHERE s1.prod = s.prod AND s1.state = 'NY') AS NY_avg_quant,
+
+        (SELECT COUNT(s1.quant)
+        FROM sales s1
+        WHERE s1.prod = s.prod AND s1.state = 'NY') AS NY_count_quant,
+
+        -- NJ state
+        (SELECT SUM(s2.quant)
+        FROM sales s2
+        WHERE s2.prod = s.prod AND s2.state = 'NJ') AS NJ_sum_quant,
+
+        (SELECT AVG(s2.quant)
+        FROM sales s2
+        WHERE s2.prod = s.prod AND s2.state = 'NJ') AS NJ_avg_quant,
+
+        (SELECT COUNT(s2.quant)
+        FROM sales s2
+        WHERE s2.prod = s.prod AND s2.state = 'NJ') AS NJ_count_quant
+
+    FROM sales s
+    GROUP BY s.prod;

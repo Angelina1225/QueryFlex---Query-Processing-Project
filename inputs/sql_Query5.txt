@@ -1,0 +1,10 @@
+    WITH product_state_counts AS (
+        SELECT prod, state,
+            COUNT(*) AS X_count_quant,
+            SUM(quant) AS X_sum_quant
+        FROM sales
+        GROUP BY prod, state
+    )
+    SELECT prod, state, X_count_quant, X_sum_quant
+    FROM product_state_counts
+    WHERE X_count_quant > 250;
